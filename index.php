@@ -2,7 +2,7 @@
 session_start();
 require_once("connect.php");
 require_once("functions-new.php");
-$loggedIn = $_SESSION['loggedin'];
+$loggedIn = $_SESSION['loggedin'] ?? "not logged in";
 
 // This pulls the text from after the first / in the
 // URL and sets it to an array
@@ -47,9 +47,10 @@ if ($thisPagename == "") {
        makeContent($conn, $thisPagename);
        ?>
     </div>
+    <img class="tower" src="img/Tower.jpg" alt="Denmark Tower">
   </section>
   <section class="grey">
-
+    
   </section>
   
 </body>

@@ -9,9 +9,12 @@ function makeNav($conn, $loggedIn) {
        }
        if ($loggedIn == "not logged in") {
        echo "<li><a href='login.php'>Log In</a></li>";
+       } else{
+           echo "<li><a href= 'logout.php'>Log Out</a></li>";
+           echo "<p>Howdy ". $SESSION["realname"] . "</p>";
        }
        echo "</ul>";
-    } //end of makeNav funtion
+      }//end of makeNav funtion
     
 function makeContent($conn, $thisPagename) {
     // This creates the content from the content 

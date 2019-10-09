@@ -29,14 +29,23 @@
 .content {
     display: flex;
     justify-content: center; 
-    font-size: 50px;
+    font-size: 20px;
     padding: 80px;
     background-color: #8c8c8c;
     border: 3px solid rgba(255, 255, 0, 0.781);
+}
+
+.welcome-content {
+    font-size: 20px;
 }
 
 .grey{
     width: vw100;
     height: 188px;
     background-color: #24252A; 
+}
+
+.tower {
+    width: 70px;
+    height: 70px;
 }
