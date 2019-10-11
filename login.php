@@ -3,27 +3,33 @@ session_start();
 require_once('connect.php');
 
 if (!empty($_POST)){
-// if not logged in then check if login was submitted
+// if not logged in then check if login was submitted   
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
     $sql = "SELECT  username, password, realname FROM test.users";
     $result = $conn->query($sql);
-    $row = $result ->fetch_assoc();
+    $row = $result->fetch_assoc();
     
-if ($_POST["username"] == $row["username"] &&
-    md5($_POST["password"]) == $row["password"])
-    {
-        $_SESSION["loggedin"] = "logged in";
-        $_SESSION["realname"] = $row["realname"];
-        $loggedIn = $_SESSION ["loggedin"];
-    } 
-} else {
-    $loggedIn = $_SESSION["loggedin"] ?? "not logged in";
-}
+    if ($username == $row["username"] &&
+        md5($password) == $row["password"])
+        {
+            $_SESSION["loggedin"] = "logged in";
+            $_SESSION["realname"] = $row["realname"];
+            $loggedIn = $_SESSION["loggedin"];
+        } else {
+            echo "Try again";
+            $loggedIn = $_SESSION["loggedin"] ?? "not logged in";
+        }
+    } else {
+        $loggedIn = $_SESSION["loggedin"] ?? "not logged in";
+    }
+
 if ($loggedIn == "logged in") {
     // if "logged in" then redirect to index
     header("Location: http://192.168.33.10/index");
-} else {
-    // if not logged in show login form
-
+    } else {
+        // if not logged in show login form
 ?>
 <!DOCTYPE html>
 <html lang="en">
